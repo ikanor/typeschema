@@ -1,27 +1,25 @@
 """
-Declarative Model syntax for simpler typeschema use
-
 typeschema.models defines useful classes that allow for declarative syntax
-for objects with typeschema properties. A simple example looks like this.
+for objects with ``typeschema`` properties. A simple example looks like this.
 
-import typeschema.properties as ts
+>>> import typeschema.properties as ts
 
-class Example(Model):
-    foo = Define(ts.int, default=0)
-    bar = Define(ts.string)
+>>> class Example(Model):
+...     foo = Define(ts.int, default=0)
+...     bar = Define(ts.string)
 
 Metaclass magic makes it possible to omit the name of the property. Instances of
-Example will have foo and bar properties, which will be instances of typeschema.int
-and typeschema.string respectively.
+``Example`` will have ``foo`` and ``bar`` properties, which will be instances of
+``typeschema.int`` and ``typeschema.string`` respectively.
 
-The Example class will also get a _meta attribute, instance of the Meta class
+The ``Example`` class will also get a ``_meta`` attribute, instance of the ``Meta`` class
 (see below). This class contains information about the way the model was declared.
 
 """
 
 class Define(object):
     """
-    Wraps a typeschema.property when using Model declarative syntax.
+    Wraps a ``typeschema.property`` when using ``Model`` declarative syntax.
     All arguments and keyword arguments are used to instantiate the property.
     """
     def __init__(self, propclass, *args, **kwargs):
@@ -39,8 +37,8 @@ class Define(object):
 
 class Meta(object):
     """
-    Holds information about the definitions (Define instances) and properties
-    (property instances) that belong to a Model. Attributes:
+    Holds information about the definitions (``Define`` instances) and properties
+    (``property`` instances) that belong to a ``Model``. Attributes:
 
     properties: a dict of name: property
     definitions: a dict of name: Define
@@ -53,8 +51,8 @@ class Meta(object):
 class ModelMeta(type):
     """
     Metaclass thas makes the declarative syntax possible. Replaces class-level
-    instances of Define with instances of property, and sets _meta to the proper
-    Meta instance.
+    instances of ``Define`` with instances of ``property``, and sets ``_meta`` to the proper
+    ``Meta`` instance.
     """
 
     def __new__(cls, cls_name, bases, attrs):

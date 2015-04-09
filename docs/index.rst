@@ -5,6 +5,12 @@ typeschema
 .. automodule:: typeschema.typeschema
    :members:
 
+****************
+typeschema.model
+****************
+.. automodule:: typeschema.model
+   :members:
+
 *********************
 typeschema.decorators
 *********************
